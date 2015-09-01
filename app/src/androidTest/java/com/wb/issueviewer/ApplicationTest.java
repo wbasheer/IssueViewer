@@ -1,4 +1,4 @@
-package com.wbasheer.issueviewer;
+package com.wb.issueviewer;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

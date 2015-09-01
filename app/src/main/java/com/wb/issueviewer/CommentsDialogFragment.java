@@ -1,4 +1,4 @@
-package com.wbasheer.issueviewer;
+package com.wb.issueviewer;
 
 import android.app.DialogFragment;
 import android.app.LoaderManager;
@@ -11,9 +11,9 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.wbasheer.issueviewer.adapters.CommentListAdapter;
-import com.wbasheer.issueviewer.loaders.CommentListLoader;
-import com.wbasheer.issueviewer.model.Comment;
+import com.wb.issueviewer.adapters.CommentListAdapter;
+import com.wb.issueviewer.loaders.CommentListLoader;
+import com.wb.issueviewer.model.Comment;
 
 import java.util.ArrayList;
 import java.util.List;

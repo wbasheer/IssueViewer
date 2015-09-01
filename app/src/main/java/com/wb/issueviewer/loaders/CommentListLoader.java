@@ -1,12 +1,11 @@
-package com.wbasheer.issueviewer.loaders;
+package com.wb.issueviewer.loaders;
 
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.util.Log;
 
-import com.wbasheer.issueviewer.model.Comment;
-import com.wbasheer.issueviewer.model.Issue;
+import com.wb.issueviewer.model.Comment;
 
 import org.json.JSONArray;
 import org.json.JSONException;

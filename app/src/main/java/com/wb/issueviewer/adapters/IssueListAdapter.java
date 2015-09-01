@@ -1,4 +1,4 @@
-package com.wbasheer.issueviewer.adapters;
+package com.wb.issueviewer.adapters;
 
 
 import android.content.Context;
@@ -8,32 +8,33 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.wbasheer.issueviewer.R;
-import com.wbasheer.issueviewer.model.Comment;
-import com.wbasheer.issueviewer.model.Issue;
+import com.wb.issueviewer.R;
+import com.wb.issueviewer.model.Issue;
 
 import java.util.List;
 
-public class CommentListAdapter extends ArrayAdapter<Comment> {
+public class IssueListAdapter extends ArrayAdapter<Issue> {
 
-    private List<Comment> mComments;
+    private List<Issue> mIssues;
     private Context mContext;
 
-    public CommentListAdapter(Context context, int resource, List<Comment> comments) {
+    private final int MAX_BODY_LENGTH = 140;
+
+    public IssueListAdapter(Context context, int resource, List<Issue> issues) {
         super(context, resource);
         mContext = context;
 
-        mComments = comments;
+        mIssues = issues;
     }
 
     @Override
     public int getCount() {
-        return mComments.size();
+        return mIssues.size();
     }
 
     @Override
-    public Comment getItem(int position) {
-        return mComments.get(position);
+    public Issue getItem(int position) {
+        return mIssues.get(position);
     }
 
     @Override
@@ -52,33 +53,25 @@ public class CommentListAdapter extends ArrayAdapter<Comment> {
 
             ViewHolder viewHolder = new ViewHolder();
 
-            viewHolder.usernameTextView = (TextView) convertView.findViewById(R.id.txtview_issue_title);
+            viewHolder.titleTextView = (TextView) convertView.findViewById(R.id.txtview_issue_title);
             viewHolder.bodyTextView = (TextView) convertView.findViewById(R.id.txtview_issue_body);
             convertView.setTag(viewHolder);
         }
 
-        Comment comment = getItem(position);
+        Issue issue = getItem(position);
         ViewHolder holder = (ViewHolder) convertView.getTag();
-        holder.usernameTextView.setText(comment.getUsername());
-        holder.bodyTextView.setText(comment.getBody());
+        holder.titleTextView.setText(issue.getTitle());
+        String body = issue.getBody();
+        if(body != null && body.length() > MAX_BODY_LENGTH) {
+            body = body.substring(0, MAX_BODY_LENGTH-1) + "...";
+        }
+        holder.bodyTextView.setText(body);
 
         return convertView;
     }
 
     private class ViewHolder {
-        public TextView usernameTextView;
+        public TextView titleTextView;
         public TextView bodyTextView;
     }
-
-    @Override
-    public boolean areAllItemsEnabled() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled(int position) {
-        return false;
-    }
-
-
 }

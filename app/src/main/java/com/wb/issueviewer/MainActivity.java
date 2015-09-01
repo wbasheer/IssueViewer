@@ -1,4 +1,4 @@
-package com.wbasheer.issueviewer;
+package com.wb.issueviewer;
 
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -16,9 +16,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.wbasheer.issueviewer.adapters.IssueListAdapter;
-import com.wbasheer.issueviewer.loaders.IssueListLoader;
-import com.wbasheer.issueviewer.model.Issue;
+import com.wb.issueviewer.adapters.IssueListAdapter;
+import com.wb.issueviewer.loaders.IssueListLoader;
+import com.wb.issueviewer.model.Issue;
 
 import java.util.ArrayList;
 import java.util.List;

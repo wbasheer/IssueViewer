@@ -1,4 +1,4 @@
-package com.wbasheer.issueviewer.model;
+package com.wb.issueviewer.model;
 
 
 public class Issue {

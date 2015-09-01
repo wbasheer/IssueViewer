@@ -1,16 +1,15 @@
-package com.wbasheer.issueviewer.loaders;
+package com.wb.issueviewer.loaders;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import com.wbasheer.issueviewer.model.Issue;
+import com.wb.issueviewer.model.Issue;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -29,8 +28,8 @@ public class IssueListLoader extends AsyncTaskLoader<List<Issue>> {
     private List<Issue> mIssueList;
     private Map<String, String> mParameters;
 
-    private String GITHUB_API_BASE_URL = "https://api.github.com/";
-    private String GITHUB_API_RAILS_ISSUES_URL = "repos/rails/rails/issues";
+    private String GITHUB_API_BASE_URL = "https://api.github.com";
+    private String GITHUB_API_RAILS_ISSUES_URL = "/repos/rails/rails/issues";
     public static final String DEFAULT_CHARSET = java.nio.charset.StandardCharsets.UTF_8.name();
 
     // Parameters
