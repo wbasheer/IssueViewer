@@ -29,7 +29,8 @@ public class IssueListLoader extends AsyncTaskLoader<List<Issue>> {
     private Map<String, String> mParameters;
 
     private String GITHUB_API_BASE_URL = "https://api.github.com";
-    private String GITHUB_API_RAILS_ISSUES_URL = "/repos/rails/rails/issues";
+    //private String GITHUB_API_RAILS_ISSUES_URL = "/repos/rails/rails/issues";
+    private String GITHUB_API_RXJAVA_URL = "/repos/ReactiveX/RxJava/issues";
     public static final String DEFAULT_CHARSET = java.nio.charset.StandardCharsets.UTF_8.name();
 
     // Parameters
@@ -68,7 +69,7 @@ public class IssueListLoader extends AsyncTaskLoader<List<Issue>> {
     public List<Issue> loadInBackground() {
 
         // Retrieve issues
-        String baseRequestUrl = GITHUB_API_BASE_URL + GITHUB_API_RAILS_ISSUES_URL;
+        String baseRequestUrl = GITHUB_API_BASE_URL + GITHUB_API_RXJAVA_URL;
         String p = createParameters(mParameters);
         if(p != null && !p.isEmpty())
             baseRequestUrl += "?" + p;

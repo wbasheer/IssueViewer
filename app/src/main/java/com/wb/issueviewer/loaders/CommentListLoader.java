@@ -27,7 +27,8 @@ public class CommentListLoader extends AsyncTaskLoader<List<Comment>> {
     private long mIssueId;
 
     private String GITHUB_API_BASE_URL = "https://api.github.com/";
-    private String GITHUB_API_RAILS_COMMENTS_URL = "repos/rails/rails/issues/%d/comments";
+    //private String GITHUB_API_RAILS_COMMENTS_URL = "repos/rails/rails/issues/%d/comments";
+    private String GITHUB_API_RXJAVA_COMMENTS_URL = "repos/ReactiveX/RxJava/issues/%d/comments";
     private final String DEFAULT_CHARSET = java.nio.charset.StandardCharsets.UTF_8.name();
 
     // members for JSON parsing of comments
@@ -61,7 +62,7 @@ public class CommentListLoader extends AsyncTaskLoader<List<Comment>> {
 
         Log.i(TAG, "Loading comments with issue ID: " + mIssueId);
         // Retrieve issues
-        String baseRequestUrl = GITHUB_API_BASE_URL + String.format(GITHUB_API_RAILS_COMMENTS_URL, mIssueId);
+        String baseRequestUrl = GITHUB_API_BASE_URL + String.format(GITHUB_API_RXJAVA_COMMENTS_URL, mIssueId);
 
         try {
             URL requestUrl = new URL(baseRequestUrl);
@@ -120,6 +121,9 @@ public class CommentListLoader extends AsyncTaskLoader<List<Comment>> {
 
     public static String get(URL url) {
 
+        if(url == null)
+            return null;
+
         String response = null;
         HttpURLConnection urlConnection = null;
         try {
@@ -145,7 +149,8 @@ public class CommentListLoader extends AsyncTaskLoader<List<Comment>> {
             e.printStackTrace();
         } finally {
             try {
-                urlConnection.disconnect();
+                if(urlConnection != null)
+                    urlConnection.disconnect();
             } catch (Exception e) {
                 e.printStackTrace(); // Further info on failure...
             }
